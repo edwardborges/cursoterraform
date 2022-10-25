@@ -1,9 +1,15 @@
 - hosts: terraform-ansible
   tasks:
-  - name: Instalando o python3, virtualenv
+  - name: "Instalando o python3, virtualenv"
     apt:
       pkg:
       - python3
       - virtualenv
       update_cache: yes
     become: yes
+  - name: "Instalando dependências com pip (Django e Django React)"
+    pip:
+      virtualenv: /home/ubuntu/tcc/venv
+      name:
+        - django
+        - djangorestframework
