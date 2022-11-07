@@ -5,9 +5,9 @@ name: Go
 
 on:
   push:
-    branches: [ "aula-git" ]
+    branches: [ '*' ]
   pull_request:
-    branches: [ "aula-git" ]
+    branches: [ '*' ]
 
 jobs:
 
