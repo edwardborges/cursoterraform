@@ -5,17 +5,18 @@ name: Go
 
 on:
   push:
-    branches: [ "aula-git" ]
+    branches: [ '*' ]
   pull_request:
-    branches: [ "aula-git" ]
+    branches: [ '*' ]
 
 jobs:
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         go_version: ['1.18', '1.17', '>=1.18']
+        os: ['ubuntu-latest', 'ubuntu-18.04']
     steps:
     - uses: actions/checkout@v3
 
@@ -36,7 +37,7 @@ jobs:
            
     build:
         needs: test
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
         steps:
         - uses: actions/checkout@v3
         - name: Build
